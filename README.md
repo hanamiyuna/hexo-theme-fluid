@@ -87,7 +87,7 @@ theme: fluid
 
 ## 常见问题
 
-#### 代码高亮效果异常
+#### 代码高亮异常（比如出现多重行号）
 
 - 请确认已完成上述『关闭默认的代码高亮』步骤
 - 尝试清除命令 `hexo clean && hexo g`
@@ -118,3 +118,7 @@ theme: fluid
 ## 开源协议
 
 [MIT](https://github.com/fluid-dev/hexo-theme-fluid/blob/master/LICENSE)
+
+## 微信群
+
+[查看微信群二维码](https://github.com/fluid-dev/hexo-theme-fluid/issues/96)
