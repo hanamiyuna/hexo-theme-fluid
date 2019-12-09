@@ -1,8 +1,13 @@
 <footer class="mt-5">
   <div class="text-center py-3">
-    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <% if(theme.footer.wordcount.enable) { %>
+      这个地方存放了 <%= totalcount(site) %> 个记忆元素
+      </br>
+    <% } %>
+    ©️ <%= theme.since %> - <%= new Date().getFullYear() %> <%= config.author %> 
     <i class="iconfont icon-love"></i>
-    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    Theme by <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    edited by <a href="https://github.com/hanamiyuna/hexo-theme-fluid"><b>Hanami Yuna</b></a>
     <br>
     <% if(theme.footer.beian.enable) { %>
       <a href="http://beian.miit.gov.cn/" target="_blank"
@@ -34,7 +39,7 @@
   <%- js_ex(theme.static_prefix.prettify, "/prettify.min.js") %>
   <script>
     $(document).ready(function () {
-      $('pre').addClass('prettyprint  <%- config.highlight.line_number ? 'linenums' : '' %>');
+      $('pre').addClass("prettyprint  <%- config.highlight.line_number ? 'linenums' : '' %>");
       prettyPrint();
     })
   </script>

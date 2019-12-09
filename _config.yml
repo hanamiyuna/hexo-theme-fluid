@@ -17,26 +17,26 @@ title_join_string: ' ~ '  # 浏览器标签页中的标题分隔符，效果： 
 
 highlight: # 代码高亮
   enable: true
-  theme: tomorrow-night-eighties # available: github-v2 | tomorrow | tomorrow-night | tomorrow-night-eighties，更多主题可从 https://jmblog.github.io/color-themes-for-google-code-prettify/ 获取，保存为 `*.min.css` 到 `source/lib/prettify/`，在其中 .prettyprint{ background: ***; ...} 的background 值后加上 !important，例如：.prettyprint{background:#fafbfc!important; ...}
+  theme: tomorrow # available: github-v2 | tomorrow | tomorrow-night | tomorrow-night-eighties，更多主题可从 https://jmblog.github.io/color-themes-for-google-code-prettify/ 获取，保存为 `*.min.css` 到 `source/lib/prettify/`，在其中 .prettyprint{ background: ***; ...} 的background 值后加上 !important，例如：.prettyprint{background:#fafbfc!important; ...}
 
 fun_features: # 一些好玩的功能
   typing: # 为 subtitle 添加打字机效果
     enable: true
-    typeSpeed: 70 # 打印速度
-    cursorChar: "_" # 游标字符
+    typeSpeed: 100 # 打印速度
+    cursorChar: "|" # 游标字符
     loop: false # 是否循环播放效果
   anchorjs: # 为文章内容中的标题添加锚图标
     enable: true
     element: h1,h2,h3,h4,h5,h6
     placement: right # icon放置的位置： left | right
     visible: false # true：一直可见，false：鼠标悬停时出现
-    icon: "" # 例如：§ | # | ❡ 等，留空则为默认效果
+    icon: "§" # 例如：§ | # | ❡ 等，留空则为默认效果
 
 color:  # 主体颜色配置，可以从这里寻找启发： https://www.webdesignrankings.com/resources/lolcolors/
   body_bg_color: "#eee"
-  navbar_bg_color: "#2f4154"
+  navbar_bg_color: "#FF5E81"
   navbar_text_color: "white"
-  text_color: "#3c4858"
+  text_color: "#EC4E6F"
   link_color: "#3c4858"
   link_hover_color: "#1abc9c"
 
@@ -46,6 +46,7 @@ lazyload: # 对页面中的图片进行懒加载处理，可见范围外的图�
   enable: true
   onlypost: false
 
+since: 2016
 
 #---------------------------
 # 页头
@@ -54,10 +55,10 @@ lazyload: # 对页面中的图片进行懒加载处理，可见范围外的图�
 navbar:
   blog_title:  # 导航栏左侧的标题，为空则按 hexo config.title 显示
   menu:  # 可自行增减，若想减去某个入口，可以将值留空
-    Home: /
-    Archives: /archives/
-    Categories: /categories/
-    Tags: /tags/
+    首页: /
+    时间轴: /archives/
+    罐子类型: /categories/
+    小标签: /tags/
     About: /about/
 
 search: # 搜索栏
@@ -83,6 +84,8 @@ footer:
     icp_text: 京ICP证123456号 # ICP证号
     police_text: 京公网安备12345678号 # 公安备案号，不填则只显示ICP
     police_code: 12345678 # 公安备案的编号，用于URL跳转查询
+  wordcount:
+    enable: true
 
 scroll_top_arrow:  # 向顶部滚动的箭头
   enable: true
@@ -92,7 +95,7 @@ scroll_top_arrow:  # 向顶部滚动的箭头
 # Index Page
 #---------------------------
 index:
-  banner_img: /img/default.png
+  banner_img: "https://i.loli.net/2019/12/09/Ycv4kUjmA15u8nR.jpg"
   banner_img_height: 100  # available: 0 - 100
   slogan:  # 首页副标题的独立设置
     enable: true  # 为 false 则不显示任何内容
@@ -111,9 +114,9 @@ index:
 # Post Page
 #---------------------------
 post:
-  banner_img: /img/default.png
+  banner_img: "https://i.loli.net/2019/12/09/Ycv4kUjmA15u8nR.jpg"
   banner_img_height: 70  # available: 0 - 100
-  date_format: "dddd, MMMM Do YYYY, h:mm a"
+  date_format: " YYYY 年 M 月 Do dddd HH:mm a"
   toc:
     enable: true
   copyright:
@@ -125,7 +128,11 @@ post:
   comments:
     enable: false
     type: disqus  # available: disqus | valine | gitalk | utterances
-
+  wordcount:
+    enable: true
+    min2read: true
+    chinese_speed: 300
+    english_speed: 160
 
 #---------------------------
 # 评论
@@ -181,8 +188,8 @@ valine:
 # Archive Page
 #---------------------------
 archive:
-  banner_img: /img/default.png
-  banner_img_height: 80  # available: 0 - 100
+  banner_img: "https://i.loli.net/2019/12/09/bntuA7dKC1O8QLX.jpg"
+  banner_img_height: 70  # available: 0 - 100
 
 
 #---------------------------
@@ -190,8 +197,8 @@ archive:
 # Categories Page
 #---------------------------
 category:
-  banner_img: /img/default.png
-  banner_img_height: 80  # available: 0 - 100
+  banner_img: "https://i.loli.net/2019/12/09/R7YNFCfuD3MqpXG.jpg"
+  banner_img_height: 70  # available: 0 - 100
 
 
 #---------------------------
@@ -199,14 +206,14 @@ category:
 # Tags Page
 #---------------------------
 tag:
-  banner_img: /img/default.png
-  banner_img_height: 80  # available: 0 - 100
+  banner_img: "https://i.loli.net/2019/12/09/HaToJ6Os4Gj2eFE.jpg"
+  banner_img_height: 70  # available: 0 - 100
   tagcloud: # 标签云
-    min_font: 15
-    max_font: 30
+    min_font: 20
+    max_font: 35
     unit: px  # 字号单位
-    start_color: "#BBBBEE"
-    end_color: "#337ab7"
+    start_color: "#FF7D9D"
+    end_color: "#ff3b6c"
 
 
 #---------------------------
@@ -215,14 +222,15 @@ tag:
 #---------------------------
 about:  # 以下仅为页面顶部的基本信息，更多内容请在 ./pages/about.md 中编辑，支持 markdown 和 HTML
   md_path: ./pages/about.md  # 关于页文档的相对路径，可以按相对文档设置主题之外的路径，从而避免更新冲突
-  banner_img: /img/default.png
-  banner_img_height: 80  # available: 0 - 100
-  avatar: /img/avatar.png # 头像
-  name: myname
-  introduce: info / info / info # 支持 HTML
+  banner_img: "https://i.loli.net/2019/12/09/7nEZY2IRrU3utPl.jpg"
+  banner_img_height: 60  # available: 0 - 100
+  avatar: "https://i.loli.net/2019/12/09/2BazvM4fFWeuciK.jpg" # 头像
+  name: 花見佑奈
+  introduce: 努力的小可爱 / 设计师 / 游戏开发者 # 支持 HTML
   icons: # 更多图标可从 https://fontawesome.com/icons 查找，并以 "图标名: url" 的格式添加在下方
-    "fab fa-github": https://github.com
-    "fab fa-twitter": https://twitter.com
+    "fab fa-github": https://github.com/hanamiyuna
+    "fab fa-twitter": https://twitter.com/hanamiyuna
+    "fab fa-dribbble": https://dribbble.com/hanamiyuna
 
 
 #---------------------------
@@ -230,6 +238,6 @@ about:  # 以下仅为页面顶部的基本信息，更多内容请在 ./pages/a
 # 404 Page
 #---------------------------
 page404:
-  banner_img: /img/default.png
-  banner_img_height: 80  # available: 0 - 100
-  subtitle: 'Page not found'
+  banner_img: /img/404.png
+  banner_img_height: 100  # available: 0 - 100
+  subtitle: '小刺猬也不知道你要找的东西去哪里了呢'

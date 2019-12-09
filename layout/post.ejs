@@ -12,6 +12,13 @@ page.banner_img_height = theme.post.banner_img_height
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto">
           <div class="markdown-body">
+            <% if (theme.post.wordcount.enable) { %>
+              <%  %>
+              <div class="wcount" style=<%=  %>>
+                <i class="far fa-keyboard"></i> 本文有 <%= wordcount(page.content) %> 字  ｜
+                <i class="fas fa-mug-hot"></i> 阅读时长 ≈ <%= min2read(page.content) %> 分钟
+              </div>
+            <% } %>
             <%- page.content %>
             <hr>
           </div>
