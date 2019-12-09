@@ -1,7 +1,4 @@
-html,
-body,
-header,
-.view
+html, body, header, .view
   height 100%
   overflow-wrap break-word
 
@@ -21,6 +18,11 @@ body
 
   &:hover
     background-color $link-hover-bg!important
+
+.visitors
+  font-size .8em
+  padding .45rem
+  float right
 
 #board
   position relative
@@ -51,9 +53,12 @@ body
 
 // Rewrite github-markdown.css
 
-.markdown-body hr
-  height .2em
-  margin 2rem 0
+.markdown-body
+  hr
+    height .2em
+    margin 2rem 0
+  strong
+    font-weight bold
 
 // Rewrite mdb.css
 
@@ -92,6 +97,22 @@ body
   .navbar
     font-size 1rem
     line-height 2.5rem
+
+.pagination a, .pagination .current
+  outline 0
+  border 0
+  background-color transparent
+  font-size .9rem
+  padding .5rem .75rem
+  line-height 1.25
+  -webkit-border-radius .125rem
+  border-radius .125rem
+  -webkit-transition all .3s linear
+  -o-transition all .3s linear
+  transition all .3s linear
+
+.pagination a:hover, .pagination .current
+  background-color #eee
 
 .scroll-down-bar
   position absolute
@@ -243,3 +264,21 @@ body
   100%
     -webkit-transform translateY(0)
     transform translateY(0)
+
+
+.wechat
+  cursor pointer
+  position relative
+
+  &:hover .wechat-qrcode
+    display block
+
+.wechat-qrcode
+  width 200px
+  height 300px
+  background url($about-wechat-qrcode) no-repeat
+  background-size 100%
+  position absolute
+  right -100px
+  z-index 99
+  display none
