@@ -10,7 +10,7 @@ page.banner_img_height = theme.post.banner_img_height
     <div class="d-none d-lg-block col-lg-2"></div>
     <div class="col-lg-8 nopadding-md">
       <div class="py-5 z-depth-3" id="board">
-        <div class="post-content mx-auto">
+        <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
             <% if (theme.post.wordcount.enable) { %>
               <%  %>
@@ -24,22 +24,26 @@ page.banner_img_height = theme.post.banner_img_height
           </div>
           <br>
           <div>
-            <% if (page.categories.length != 0) { %>
-              <p>
+            <p>
+            <% if (page.categories.length > 0) { %>
+              <span>
                 <i class="iconfont icon-inbox"></i>
                 <% page.categories.each(function(cate) { %>
-                  <a class="hover-with-bg" href="/categories/<%- encodeURI(cate.name) %>"><%= cate.name %></a>
+                  <a class="hover-with-bg" href="/categories/<%- encodeURI(cate.name).replace('.', '-') %>"><%= cate.name %></a>
                   &nbsp;
                 <% }) %>
-              </p>
+              </span>&nbsp;&nbsp;
             <% } %>
-            <p>
-              <i class="iconfont icon-tag"></i>
-              <% page.tags.each(function(tag) { %>
-                <a class="hover-with-bg" href="/tags/<%- encodeURI(tag.name) %>"><%= tag.name %></a>
-              <% }) %>
+            <% if (page.tags.length > 0 ) { %>
+              <span>
+                <i class="iconfont icon-tag"></i>
+                <% page.tags.each(function(tag) { %>
+                  <a class="hover-with-bg" href="/tags/<%- encodeURI(tag.name).replace('.', '-') %>"><%= tag.name %></a>
+                <% }) %>
+              </span>
+            <% } %>
             </p>
-            <% if(theme.post.copyright.enable) { %>
+            <% if(theme.post.copyright.enable && theme.post.copyright.content) { %>
               <p class="note note-warning"><%- theme.post.copyright.content %></p>
             <% } %>
           </div>

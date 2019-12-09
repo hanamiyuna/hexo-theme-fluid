@@ -2,6 +2,8 @@
 # Fluid
 # Author: Fluid-dev organization
 # Github: https://github.com/fluid-dev/hexo-theme-fluid
+#
+# 本配置的详细指南请见：https://fluid-dev.github.io/hexo-fluid-docs/guide/
 #---------------------------
 
 
@@ -39,14 +41,28 @@ color:  # 主体颜色配置，可以从这里寻找启发： https://www.webdes
   text_color: "#EC4E6F"
   link_color: "#3c4858"
   link_hover_color: "#1abc9c"
+  board_color: "#fff"
 
-baidu_analytics:  # 百度统计的Key
+web_analytics:  # 网页访问统计
+  enable: true
+  baidu:  # 百度统计的Key，参见 https://tongji.baidu.com/sc-web/10000033910/home/site/getjs?siteId=13751376 代码获取中 hm.js? 后边的字符串
+  google:  # Google统计的Tracking ID，参见 https://analytics.google.com/analytics/web/
+  tencent:  # 腾讯统计的H5 App id，参见 https://mta.qq.com/h5/manage/ctr_app_manage
+  woyaola:  # 51.la站点统计ID，参见 https://www.51.la/user/site/index
+  cnzz:  # 友盟/cnzz站点统计web_id，参见 https://web.umeng.com/main.php?c=site&a=show
 
 lazyload: # 对页面中的图片进行懒加载处理，可见范围外的图片不会加载
   enable: true
-  onlypost: false
+  onlypost: false  # 仅在文章页使用懒加载
+
+smooth_scroll: # 平滑滚动效果
+  enable: true
 
 since: 2016
+
+daovoice:  # 在线客服 Daovoice 参考：http://dashboard.daovoice.io
+  enable: false # 是否开启在线客服聊天
+  appid: ''  # 应用ID设置
 
 #---------------------------
 # 页头
@@ -74,11 +90,17 @@ scroll_down_arrow:  # 向下滚动的箭头
 
 banner_scroll: false  # 头图是否跟随页面滚动
 
+
 #---------------------------
 # 页脚
 # Footer
 #---------------------------
 footer:
+  statistics:  # 统计网站 PV、UV，使用的是不蒜子，显示在页脚
+    enable: true
+    pv_format: "总访问量 {} 次"  # 显示的文本，{}是数字的占位符（必须包含)，下同
+    uv_format: "总访客数 {} 人"
+
   beian:  # The footer of China's website policy, other areas keep disable
     enable: false
     icp_text: 京ICP证123456号 # ICP证号
@@ -89,6 +111,7 @@ footer:
 
 scroll_top_arrow:  # 向顶部滚动的箭头
   enable: true
+
 
 #---------------------------
 # 首页
@@ -116,18 +139,37 @@ index:
 post:
   banner_img: "https://i.loli.net/2019/12/09/Ycv4kUjmA15u8nR.jpg"
   banner_img_height: 70  # available: 0 - 100
-  date_format: " YYYY 年 M 月 Do dddd HH:mm a"
-  toc:
+  meta:  # 文章标题下方的信息
+    date:  # 文章日期
+      enable: true
+      format: "YYYY 年 M 月 Do dddd HH:mm a"  # 格式参照 ISO-8601 日期格式化
+    wordcount:  # 字数统计
+      enable: true
+      format: "{} 字"  # 显示的文本，{}是数字的占位符（必须包含)，下同
+    min2read:  # 阅读时间
+      enable: true
+      format: "{} 分钟"
+    views:  # 阅读次数，统计基于不蒜子
+      enable: true
+      format: "{} 次"
+  toc:  # 右侧导航条
     enable: true
-  copyright:
+  copyright:  # 版权声明
     enable: true
     content: '本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！'
-  custom:
+  custom:  # 文章底部自定义内容
     enable: false
     content: '<img src="https://octodex.github.com/images/jetpacktocat.png" class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">' # 自定义区域，支持 HTML，可自行插入赞赏码、公众号二维码等内容
-  comments:
+  comments:  # 评论
+    enable: false  # 开启评论
+    type: disqus  # 指定使用的评论模块  available: disqus | valine | gitalk | utterances | changyan | livere
+  image_zoom:  # 文章图片可点击放大
+    enable: true
+  math:  # 数学公式，开启之前需要更换 Markdown 渲染器，否则复杂公式会有兼容问题，具体请见 https://fluid-dev.github.io/hexo-fluid-docs/guide/#数学公式
     enable: false
     type: disqus  # available: disqus | valine | gitalk | utterances
+    specific: false  # 开启后，只有在文章 Front-matter 里指定 `math: true` 才会在文章页启动公式转换，以便在页面不包含公式时提高加载速度
+    engine: mathjax  # 公式引擎  available: mathjax | katex
   wordcount:
     enable: true
     min2read: true
@@ -138,6 +180,8 @@ post:
 # 评论
 # Comments
 #---------------------------
+
+# 开启评论在上方的 post.comments 配置
 
 # utterances
 # You can install utterances with https://utteranc.es/ and generate your configuration
@@ -180,7 +224,32 @@ valine:
   placeholder: 说点什么 # comment box placeholder
   avatar: retro # gravatar style https://valine.js.org/avatar.html
   pageSize: 10 # pagination size
-  visitor: false # leancloud-counter-security is not supported for now. When visitor is set to be true, appid and appkey are recommended to be the same as leancloud_visitors' for counter compatibility. Article reading statistic https://valine.js.org/visitor.html
+
+# Changyan
+# You can get your appid from http://changyan.kuaizhan.com/setting/common/isv-mgr
+# Install: http://changyan.kuaizhan.com/static/help/f-fitself.html
+changyan:
+  appid: ''            # your changyan application appid        # 畅言ID
+  conf: ''             # conf                                   # 畅言设置
+  notify: false        # beian warning message                  # 备案提示
+  libopen: true        # open laboratory                        # 畅言实验室功能开关
+  cyEmoji: true        # comments emoji                         # 评论表情
+  cyWallsplugin: true  # Hot text matching                      # 热文配图
+  cyReping: true       # hot comments                           # 热门评论
+  cyReward: true       # reward                                 # 打赏
+  cyQing: true         # Light comment                          # 轻评论
+  cyHotusers: true     # User evaluation                        # 热评用户
+  cyHotnews: true      # Hot news                               # 热门新闻
+  cyHotnewswall: true  # News wall                              # 新闻墙
+  cyPk: ''             # Topic debate                           # 辩论
+  cyPoll: true         # vote                                   # 投票
+  cyBarrage: true      # Picture barrage                        # 图片弹幕
+  cyTvbarrage: true    # Video barrage                          # 视频弹幕
+
+# Livere 来必力
+# You can get your uid from https://www.livere.com/my_Livere
+livere:
+  uid: ''            # your livere application uid        # 来必力ID
 
 
 #---------------------------
@@ -241,3 +310,12 @@ page404:
   banner_img: /img/404.png
   banner_img_height: 100  # available: 0 - 100
   subtitle: '小刺猬也不知道你要找的东西去哪里了呢'
+
+#---------------------------
+# 鼠标点击样式
+# mouse click style
+#---------------------------
+
+mouse_click:
+  enable: false # 鼠标点击样式开启开关
+  style: values # 目前设置两个值：values love

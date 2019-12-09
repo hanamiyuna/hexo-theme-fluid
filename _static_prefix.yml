@@ -56,3 +56,11 @@ prettify_theme: /lib/prettify
 tocbot: /lib/tocbot
 
 typed: /lib/typed
+
+fancybox: /lib/fancybox
+
+smooth_scroll: /lib/smooth-scroll
+
+mathjax: https://cdn.staticfile.org/mathjax/2.7.6/
+
+katex: /lib/katex
