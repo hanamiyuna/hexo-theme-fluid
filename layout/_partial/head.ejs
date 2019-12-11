@@ -1,8 +1,24 @@
 <%
 var joinStr = theme.title_join_string
 var title = config.title
+let link = config.url
+let type = "website"
+let image = theme.about.avatar
+let article = false
+let description = page.excerpt
+
 if (page.title) {
   title = [page.title, title].join(joinStr)
+  type = "article"
+  link = page.permalink
+  image = page.index_img
+  description = page.excerpt
+
+  article = {
+    published_time: page.date,
+    modified_time: page.updated,
+    author: config.author
+  }
 }
 %>
 
@@ -16,6 +32,17 @@ if (page.title) {
   <meta name="description" content="<%= config.description %>">
   <meta name="author" content="<%= config.author %>">
   <meta name="keywords" content="<%= config.keywords %>">
+  <!-- Open Graph -->
+  <meta property="og:title" content="<%= title %>" />
+  <meta property="og:url" content="<%= link %>" />
+  <meta property="og:image" content="<%= image %>" />
+  <meta property="og:type" content="<%= type %>" />
+  <meta property="og:description" content="<%= description %>" />
+  <% if(article) { %>
+  <meta property="article:published_time" content="<%= new Date(article.published_time).toISOString() %>" />
+  <meta property="article:modified_time" content="<%= new Date(article.modified_time).toISOString() %>" />
+  <meta property="article:author" content="<%= article.author %>" />
+  <% } %>
   <title><%= title %></title>
   <%- css_ex(theme.static_prefix.font_awesome, "css/all.min.css") %>
   <%- css_ex(theme.static_prefix.bootstrap, "css/bootstrap.min.css") %>
