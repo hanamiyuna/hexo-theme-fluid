@@ -1,5 +1,6 @@
 <footer class="mt-5">
   <div class="text-center py-3">
+<<<<<<< HEAD
     <% if(theme.footer.wordcount.enable) { %>
       这个地方存放了 <%= totalcount(site) %> 个记忆元素
       </br>
@@ -10,9 +11,19 @@
     edited by <a href="https://github.com/hanamiyuna/hexo-theme-fluid"><b>Hanami Yuna</b></a>
     <br>
 
+=======
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    </div>
+>>>>>>> 6389f6176f72a84b69f4125be74c116e9a52deca
     <%- partial('_partial/busuanzi.ejs') %>
-
     <%- partial('_partial/beian.ejs') %>
+    <% if(theme.web_analytics.cnzz) { %>
+      <!-- cnzz Analytics Icon -->
+      <span id="cnzz_stat_icon_<%- theme.web_analytics.cnzz %>" style="display: none"></span>
+    <% } %>
   </div>
 </footer>
 

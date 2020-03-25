@@ -12,9 +12,12 @@ body
     &:hover
       color $link-hover-color
 
+img[srcset]
+  object-fit cover
+
 .hover-with-bg
   display inline-block
-  padding: .45rem
+  padding .45rem
 
   &:hover
     background-color $link-hover-bg!important
@@ -26,12 +29,12 @@ body
 
 #board
   position relative
-  margin-top -3rem
+  margin-top -2rem
   background-color $board-bg-color
   border-radius 0.5rem
   z-index 3
 
-@media (max-width: 768px)
+@media (max-width: 767px)
   header
     .h2
       font-size 1.5rem
@@ -40,10 +43,6 @@ body
     padding-left 0 !important
     padding-right 0 !important
 
-.row
-  padding-top 0.5rem
-  padding-bottom 0.5rem
-
 #local-search-result
   .search-list-title
     border-left 3px solid #0d47a1
@@ -51,14 +50,92 @@ body
   .search-list-content
     padding 0 1.25rem
 
+.page-content, post-content
+  strong
+    font-weight bold
+
+.code-block
+  position relative
+
+.code-block > pre
+  padding-top 1.5rem
+  padding-bottom 1.5rem
+
+.copy-btn
+  display inline-block
+  cursor pointer
+  border-radius .1rem
+  border none
+  background-color #fafbfc
+  -webkit-user-select none
+  -moz-user-select none
+  -ms-user-select none
+  user-select none
+  -webkit-appearance none
+  font-size .75rem
+  line-height 1
+  font-weight bold
+  outline none
+  color #6a737d
+  -webkit-transition opacity .2s ease-in-out
+  -o-transition opacity .2s ease-in-out
+  transition opacity .2s ease-in-out
+  padding .25rem
+  position absolute
+  right .5rem
+  top .5rem
+  opacity 0
+
+.copy-btn > span
+  margin-left 5px
+
+.code-block:hover > .copy-btn
+  opacity 0.9
+
+.code-block:hover > .copy-btn, .code-block:not(:hover) > .copy-btn
+  outline none
+
+.hidden-mobile
+  display block
+
+.visible-mobile
+  display none
+
+@media (max-width: 575px)
+  .hidden-mobile
+    display none
+
+  .visible-mobile
+    display block
+
 // Rewrite github-markdown.css
 
 .markdown-body
+  margin-bottom 2rem
+
+  strong
+    font-weight bold
+
+  h1, h2, h3, h4, h5, h6
+    margin-bottom .75em
+    margin-top 2em
+
+    &:focus
+      outline none
+
   hr
     height .2em
     margin 2rem 0
+
   strong
     font-weight bold
+
+  p > img, p > a > img
+    max-width 90%
+    margin 1.5rem auto
+    display block
+    box-shadow $img-shadow
+
 
 // Rewrite mdb.css
 
@@ -93,7 +170,8 @@ body
 .navbar-col-show
   background-color $navbar-bg-color
 
-@media (max-width: 768px)
+
+@media (max-width: 767px)
   .navbar
     font-size 1rem
     line-height 2.5rem
@@ -118,7 +196,7 @@ body
   position absolute
   width 100%
   font-size 2rem
-  height 8rem
+  height 6rem
   text-align center
   cursor pointer
   bottom 0
@@ -127,11 +205,11 @@ body
   position absolute
   padding-top 2rem
   color #ff
-  -webkit-transform: translateZ(0);
-  -moz-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  -o-transform: translateZ(0);
-  transform: translateZ(0);
+  -webkit-transform translateZ(0)
+  -moz-transform translateZ(0)
+  -ms-transform translateZ(0)
+  -o-transform translateZ(0)
+  transform translateZ(0)
   -webkit-animation scroll-down 1.5s infinite
   animation scroll-down 1.5s infinite
 
@@ -266,19 +344,36 @@ body
     transform translateY(0)
 
 
-.wechat
+.qr-trigger
   cursor pointer
   position relative
 
-  &:hover .wechat-qrcode
+  &:hover .qr-img
     display block
+    transition all .3s
 
-.wechat-qrcode
-  width 200px
-  height 300px
-  background url($about-wechat-qrcode) no-repeat
-  background-size 100%
+.qr-img
+  max-width 200px
   position absolute
   right -100px
   z-index 99
   display none
+  box-shadow 0 0 20px -5px hsla(0, 0%, 62%, .2)
+
+// Footer police 添加备案图标
+a.police-beian
+  position relative
+  overflow hidden
+  display inline-flex
+  align-items center
+  justify-content center
+
+  img
+    margin 0 3px
+    width 18px
+    height 18px
+
+@media (max-width: 320px)
+  a.police-beian
+    span.police-beian-sep
+      display none

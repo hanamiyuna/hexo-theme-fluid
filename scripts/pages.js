@@ -25,17 +25,11 @@ hexo.extend.generator.register('_categories', function (locals) {
   };
 });
 
-// generate about page
-hexo.extend.generator.register('_about', function (locals) {
+// generate links page
+hexo.extend.generator.register('_links', function (locals) {
   return {
-    path: 'about/index.html',
+    path: 'links/index.html',
     data: locals.theme,
-    layout: 'about'
+    layout: 'links'
   };
-});
-const path = require('path');
-hexo.extend.helper.register('about_body', function () {
-  var rootPath = path.join(__dirname, '../');
-  var mdPath = path.join(rootPath, hexo.theme.config.about.md_path);
-  return hexo.render.renderSync({ path: mdPath });
 });
