@@ -7,7 +7,7 @@
 		return (
 			rect.top >= 0
 			&& rect.left >= 0
-			&& rect.top <= height * 1.5
+			&& rect.top <= height * 3
 		);
 	}
 	function loadImage(el, fn) {
@@ -32,18 +32,23 @@
 				})(i);
 			}
 		}
+		if (images.length === 0) {
+			window.removeEventListener('scroll', imageLazyLoader)
+		}
 	}
 
 	function throttle(method, context) {
 		clearTimeout(method.tId);
 		method.tId = setTimeout(function () {
-				method.call(context);
-		}, 200);
+			method.call(context);
+		}, 100);
 	}
+
+	var imageLazyLoader = function () {
+		throttle(processImages, window);
+	};
 
 	processImages();
 
-	window.addEventListener('scroll', function () {
-		throttle(processImages, window);
-	});
+	window.addEventListener('scroll', imageLazyLoader);
 })(this);
